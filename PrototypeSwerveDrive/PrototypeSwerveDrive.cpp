@@ -9,14 +9,12 @@
 
 #include <m2560/io.h>
 
-int main(void)
-{
-	pinMode(13,OUTPUT);
-    while(1)
-    {
-		digitalWrite(13,HIGH);
-		_delay_ms(1000);
-		digitalWrite(13,LOW);
-		_delay_ms(1000);
-	}		 
-}
+void setup(){
+	DDRB=0xff;
+}	
+void loop(){
+		PORTB=0x00;
+		//_delay_ms(100);
+		PORTB=0xff;
+		//_delay_ms(100);
+}		
