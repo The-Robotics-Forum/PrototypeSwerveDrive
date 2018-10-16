@@ -10,7 +10,7 @@
 #include <m2560/io.h>
 
 void setup(){
-	DDRB=0xff;
+	PORTB
 }	
 void loop(){
 		PORTB=0x00;
