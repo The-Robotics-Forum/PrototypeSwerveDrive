@@ -6,6 +6,14 @@
 			2. Attach 2 servos on same pin
 			3. Control angle using Android App
  */ 
+/*************INDEX******************
+*BUG – a known bug that should be corrected.
+*FIXME – should be corrected.
+*HACK – a workaround.
+*TODO – something to be done.
+*UNDONE – a reversal or "roll back" of previous code.
+*XXX – warn other programmers of problematic or misguiding code
+*/
 
 #include <m2560/io.h>
 #include <m2560/Servo.h>
