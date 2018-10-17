@@ -1,16 +1,25 @@
-#include<Servo.h>
-#define trig 2
-#define echo 3
+/*
+Arduino Code for Swerve-drive
 
-Servo myservo1;
+
+
+*/
+
+#include<Servo.h>
+#define trig 2  //Trigger set to Pin 2 
+#define echo 3  //Echo set to Pin 3
+
+// 4 Objects created for 4 servos 
+Servo myservo1; 
 Servo myservo2;
 Servo myservo3;
 Servo myservo4;
 
-int k=0.12;
-int a=90,b=90,c=90,d=90;
-float x,y,z,w,value;
-int l;
+int k=0.12;// Constant for getting the sine wave
+int a=90,b=90,c=90,d=90;  //Initial angles of servo motors for all wheels to be parallel
+float x,y,z,w;  //Angles of servo
+int value;  //Distance in mm from wall
+
 
   void map1();
   void map2();
@@ -21,6 +30,7 @@ int l;
   void map7();
 
 void setup() {
+
   pinMode(echo,INPUT);
   pinMode(trig,OUTPUT);
   myservo1.attach(9); 
@@ -38,10 +48,15 @@ void loop()
   delayMicroseconds(10);
   digitalWrite(trig,LOW);
   
+  //Distance is calculated in cm using US sensor
     int duration,distance;
     duration=pulseIn(echo,HIGH);
     distance=0.034*duration/2;
-    value=distance*100;
+    
+  
+    value=distance*100; // Distance is converted in mm and stored in 'value' variable
+ 
+ //According to the distance,we will decide in which quarter of the sine wave we should enter.
  
   if((500<=value)&&(value<=1250))
   {
