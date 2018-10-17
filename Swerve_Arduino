@@ -1,0 +1,176 @@
+#include<Servo.h>
+#define trig 2
+#define echo 3
+
+Servo myservo1;
+Servo myservo2;
+Servo myservo3;
+Servo myservo4;
+
+int k=0.12;
+int a=90,b=90,c=90,d=90;
+float x,y,z,w,value;
+int l;
+
+  void map1();
+  void map2();
+  void map3();
+  void map4();
+  void map5();
+  void map6();
+  void map7();
+
+void setup() {
+  pinMode(echo,INPUT);
+  pinMode(trig,OUTPUT);
+  myservo1.attach(9); 
+  myservo2.attach(10);
+  myservo3.attach(11);
+  myservo4.attach(6); 
+}
+
+
+void loop()
+{
+  digitalWrite(trig,LOW);
+  delayMicroseconds(2);
+  digitalWrite(trig,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trig,LOW);
+  
+    int duration,distance;
+    duration=pulseIn(echo,HIGH);
+    distance=0.034*duration/2;
+    value=distance*100;
+ 
+  if((500<=value)&&(value<=1250))
+  {
+    map4();
+    
+   }
+   else if((1250<value)&&(value<=2000))
+   {
+     map1();
+    
+    }
+    else if((2000<value)&&(value<=2750))
+    {
+      map2();
+      
+    }
+    else if((2750<value)&&(value<=3500))
+    {
+     map3();
+     
+    }
+    else if((3500<value)&&(value<=4250))
+    {
+      map5();
+      
+    }
+    else if((4250<value)&&(value<=5000))
+    {
+      map6();
+      
+    }
+    else if((5000<value)&&(value<=5750))
+    {
+      map7();
+      
+    }
+
+}    
+     void map1()
+     {
+       x=(a-90) + (value-1250)*k;
+       y=(b-90)+ (value-1250)*k;
+       z=(c-90)+ (value-1250)*k;
+       w=(d-90)+ (value-1250)*k;
+
+       myservo1.write(x);
+       myservo2.write(y);
+       myservo3.write(z);
+       myservo4.write(w);
+     
+       
+     }
+     void map2()
+     {
+      x=a + (value-2000)*k;
+      y=b + (value-2000)*k;
+      z=c + (value-2000)*k;
+      w=d + (value-2000)*k;
+
+      myservo1.write(x);
+      myservo2.write(y);
+      myservo3.write(z);
+      myservo4.write(w);
+     }
+     void map3()
+     {
+       x=(a+90)-(value-2750)*k;
+       y=(b+90)-(value-2750)*k;
+       z=(c+90)-(value-2750)*k;
+       w=(d+90)-(value-2750)*k;
+
+       myservo1.write(x);
+       myservo2.write(y);
+       myservo3.write(z);
+       myservo4.write(w);
+       
+     }
+     void map4()
+    {
+       x=a- (value-500)*k;
+       y=b- (value-500)*k;
+       z=c- (value-500)*k;
+       w=d- (value-500)*k;
+       
+       myservo1.write(x);
+       myservo2.write(y);
+       myservo3.write(z);
+       myservo4.write(w);
+     
+     }
+     void map5()
+     {
+        x=a-(value-3500)*k;
+        y=b-(value-3500)*k;
+        z=c-(value-3500)*k;
+        w=d-(value-3500)*k;
+
+        myservo1.write(x);
+        myservo2.write(y);
+        myservo3.write(z);
+        myservo4.write(w);
+       
+     }
+     void map6()
+     {
+        x=(a-90)+ (value-4250)*k;
+        y=(b-90)+ (value-4250)*k;
+        z=(c-90)+ (value-4250)*k;
+        w=(d-90)+ (value-4250)*k;
+
+        myservo1.write(x);
+        myservo2.write(y);
+        myservo3.write(z);
+        myservo4.write(w);
+     }
+     void map7()
+     {
+        x=a+(value-5000)*k;
+        y=b+(value-5000)*k;
+        z=c+(value-5000)*k;
+        w=d+(value-5000)*k;
+
+        myservo1.write(x);
+        myservo2.write(y);
+        myservo3.write(z);
+        myservo4.write(w);
+        
+     }
+    
+
+
+
