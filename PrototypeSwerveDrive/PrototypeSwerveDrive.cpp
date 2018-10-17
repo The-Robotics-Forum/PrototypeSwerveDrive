@@ -8,6 +8,7 @@
  */ 
 
 #include <m2560/io.h>
+#include <m2560/Servo.h>
 #include <ModularLibrary/Cytron.h>
 void setup(){
 	pinMode(13,OUTPUT);
