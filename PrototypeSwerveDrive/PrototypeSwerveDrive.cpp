@@ -1,7 +1,7 @@
 /*
  * PrototypeSwerveDrive.cpp
  * Created: 16-10-2018 18:48:07
- *
+ * Updated: 16-10-18 19:59	
  * //TODO:	1. Include servo.h
 			2. Attach 2 servos on same pin
 			3. Control angle using Android App
@@ -10,11 +10,11 @@
 #include <m2560/io.h>
 
 void setup(){
-	PORTB
+	pinMode(13,OUTPUT);
 }	
 void loop(){
-		PORTB=0x00;
-		//_delay_ms(100);
-		PORTB=0xff;
-		//_delay_ms(100);
+		digitalWrite(13,HIGH);
+		_delay_ms(1000);
+		digitalWrite(13,LOW);
+		_delay_ms(1000);
 }		
