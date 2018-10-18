@@ -16,8 +16,6 @@
 */
 
 #include <m2560/io.h>
-<<<<<<< HEAD
-<<<<<<< HEAD
 #include <string.h>
 //#include <m2560/Servo.h>
 //#include <ModularLibrary/Cytron.h>
@@ -25,9 +23,7 @@
 static volatile int pulse = 0;
 static volatile int i = 0;
 uint8_t COUNTA = 0;//storing digital output 	
-=======
 
->>>>>>> parent of 1e7bf21... Included Cytron.h
 void setup(){
 	DDRA = 0xFF;
     DDRD = 0b11111011;
