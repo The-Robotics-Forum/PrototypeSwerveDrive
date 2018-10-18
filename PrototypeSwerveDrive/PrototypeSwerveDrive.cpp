@@ -46,10 +46,10 @@ servo s;
 		z=ang3 + (dist-2000)*k;
 		w=ang4 + (dist-2000)*k;
 
-		p.write(4,v);
-		q.write(5,y);
-		r.write(6,z);
-		s.write(7,w);
+		
+		
+		
+		
 	}
 	void angle3(int dist)
 	{
@@ -58,10 +58,10 @@ servo s;
 		z=(ang3+90)-(dist-2750)*k;
 		w=(ang4+90)-(dist-2750)*k;
 
-		p.write(4,v);
-		q.write(5,y);
-		r.write(6,z);
-		s.write(7,w);
+		
+		
+		
+		
 		
 	}
 	void angle4(int dist)
@@ -70,12 +70,6 @@ servo s;
 		y=ang2-(dist-500)*k;
 		z=ang3-(dist-500)*k;
 		w=ang4-(dist-500)*k;
-		
-		p.write(4,v);
-		q.write(5,y);
-		r.write(6,z);
-		s.write(7,w);
-		
 	}
 	void angle5(int dist)
 	{
@@ -83,12 +77,6 @@ servo s;
 		y=ang2-(dist-3500)*k;
 		z=ang3-(dist-3500)*k;
 		w=ang4-(dist-3500)*k;
-
-		p.write(4,v);
-		q.write(5,y);
-		r.write(6,z);
-		s.write(7,w);
-		
 	}
 	void angle6(int dist)
 	{
@@ -96,11 +84,6 @@ servo s;
 		y=(ang2-90)+ (dist-4250)*k;
 		z=(ang3-90)+ (dist-4250)*k;
 		w=(ang4-90)+ (dist-4250)*k;
-
-		p.write(4,v);
-		q.write(5,y);
-		r.write(6,z);
-		s.write(7,w);
 	}
 	void angle7(int dist)
 	{
@@ -108,25 +91,12 @@ servo s;
 		y=ang2+(dist-5000)*k;
 		z=ang3+(dist-5000)*k;
 		w=ang3+(dist-5000)*k;
-
-		p.write(4,v);
-		q.write(5,y);
-		r.write(6,z);
-		s.write(7,w);
-		
 	}
-
-
-
-
-
-    int main(){
-
+	
+int main(){
 
         pinMode(echo,0);
  		pinMode(trig,1);
-		
-
 	
 	   while(1)
 	   {
@@ -180,5 +150,9 @@ servo s;
 		{
 			angle7(dist);
 		}
+		p.write(v);
+		q.write(y);
+		r.write(z);
+		s.write(w);
 	}
 }
