@@ -14,8 +14,9 @@
 *UNDONE – a reversal or "roll back" of previous code.
 *XXX – warn other programmers of problematic or misguiding code
 */
-#define F_CPU 1000000UL
+
 #include <m2560/io.h>
+<<<<<<< HEAD
 <<<<<<< HEAD
 #include <string.h>
 //#include <m2560/Servo.h>
@@ -76,4 +77,16 @@ ISR(INT0_vect)//interrupt service routine when there is a change in logic level
 
 	}
 
+=======
+#include <m2560/Servo.h>
+#include <ModularLibrary/Cytron.h>
+void setup(){
+	pinMode(13,OUTPUT);
+}	
+void loop(){
+		digitalWrite(13,HIGH);
+		_delay_ms(1000);
+		digitalWrite(13,LOW);
+		_delay_ms(1000);
+>>>>>>> parent of 6ea3b60... Sinosudal Wave travelling
 }		
