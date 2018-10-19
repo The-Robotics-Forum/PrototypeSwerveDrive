@@ -27,7 +27,7 @@ Servo swerve1;
 Servo swerve2;
 
 /********************Variables********************/
-int angle[4]={30,30,135,135};
+int angle[4]={110,90,135,135};
 	
 void setup(){
 Serial.begin(4800);
