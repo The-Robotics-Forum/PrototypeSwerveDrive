@@ -27,7 +27,7 @@ Servo swerve1;
 #include <math.h>
 #include <stdlib.h>
 #include <util/delay.h>*/
-int angle[4]={180,135,135,135};
+int angle[4]={135,135,135,135};
 	
 void setup(){
 int x;	
