@@ -39,7 +39,10 @@ Servo swerve2;
 Servo swerve3;
 Servo swerve4;
 
-//Cytron motor1(dir1,pwm1);
+Cytron motor1(dir1,pwm1);
+Cytron motor2(dir2,pwm2);
+Cytron motor3(dir3,pwm3);
+Cytron motor4(dir4,pwm4);
 
 /********************Variables********************/
 #define servoPwm1 11
@@ -51,11 +54,12 @@ int correction[4]={-10,-30,-15,5},angle=180;		//HACK:All four servo are not moun
 
 /******************Main Code********************/	
 void setup(){
+	Serial.begin(4800);
 	swerve1.attach(servoPwm1);
 	swerve2.attach(servoPwm2);
 	swerve3.attach(servoPwm3);
 	swerve4.attach(servoPwm4);
-	//motor1.direction(1);
+	motor1.direction(1);
 }
 void loop(){
 	//XXX: Check if servo is stalling, if yes don't freak out just make sure it doesn't stall for long time. Check if heating
@@ -63,6 +67,5 @@ void loop(){
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
 	swerve4.write(angle+correction[3]);	
-	//motor1.drive(255);
-	delay(1000);
+	motor1.drive(50);
 }
