@@ -32,22 +32,22 @@
 #define dir1 5
 #define dir2 3
 #define dir3 16
-#define dir4 7
+#define dir4 45
 /********************Objects***********************/
 Servo swerve1;
 Servo swerve2;
 Servo swerve3;
 Servo swerve4;
 
-Cytron motor1(dir1,pwm1);
+//Cytron motor1(dir1,pwm1);
 
 /********************Variables********************/
 #define servoPwm1 11
 #define servoPwm2 12
 #define servoPwm3 46
-#define servoPwm4 47
+#define servoPwm4 7
 
-int correction[4]={-5,-15,-15,5},angle=40;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made. 
+int correction[4]={-10,-30,-15,5},angle=180;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made. 
 
 /******************Main Code********************/	
 void setup(){
@@ -55,7 +55,7 @@ void setup(){
 	swerve2.attach(servoPwm2);
 	swerve3.attach(servoPwm3);
 	swerve4.attach(servoPwm4);
-	motor1.direction(1);
+	//motor1.direction(1);
 }
 void loop(){
 	//XXX: Check if servo is stalling, if yes don't freak out just make sure it doesn't stall for long time. Check if heating
