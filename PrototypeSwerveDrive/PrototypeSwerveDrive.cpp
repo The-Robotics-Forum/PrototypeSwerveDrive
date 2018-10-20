@@ -25,52 +25,51 @@
 #include <m2560/Servo.h>
 #include <ModularLibrary/Cytron.h>
 #define pwm1 4
-#define pwm2 2
-#define pwm3 17
-#define pwm4 6
+#define pwm2 13
+#define pwm3 10
+#define pwm4 9
 
-#define dir1 5
-#define dir2 3
-#define dir3 16
-#define dir4 45
+#define dir1 30
+#define dir2 31
+#define dir3 32
+#define dir4 33
 /********************Objects***********************/
 Servo swerve1;
 Servo swerve2;
 Servo swerve3;
 Servo swerve4;
 
-Cytron motor12(dir1,pwm1,dir2,pwm2);
-Cytron motor3(dir3,pwm3);
-Cytron motor4(dir4,pwm4);
-
 /********************Variables********************/
 #define servoPwm1 11
 #define servoPwm2 12
-#define servoPwm3 46
-#define servoPwm4 7
+#define servoPwm3 5
+#define servoPwm4 2
 
-int correction[4]={-10,-30,-15,5},angle=180;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made. 
+int correction[4]={-10,-30,-15,5},angle=150;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made. 
 
 /******************Main Code********************/	
 void setup(){
 	Serial.begin(4800);
-	swerve1.attach(servoPwm1);
+	Cytron motor12(dir1,pwm1,dir2,pwm2);
+	/*swerve1.attach(servoPwm1);
 	swerve2.attach(servoPwm2);
 	swerve3.attach(servoPwm3);
-	swerve4.attach(servoPwm4);
+	swerve4.attach(servoPwm4);*/
 	motor12.direction(1,1);
-	motor3.direction(1);
+	//motor34.direction(1,1);
+	motor12.drive(100,100);
+	
 }
 void loop(){
 	//XXX: Check if servo is stalling, if yes don't freak out just make sure it doesn't stall for long time. Check if heating
-	swerve1.write(angle+correction[0]);
+	/*swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
-	swerve4.write(angle+correction[3]);	
-	motor12.drive(255,255);
-	motor3.drive(255);
+	swerve4.write(angle+correction[3]);*/	
+	
+	//motor34.drive(100,100);
 	delay(1000);
-	motor12.drive(0,0);
-	motor3.drive(0);
+	//motor12.drive(0);
+	//motor34.drive(0,0);
 	delay(1000);
 }
