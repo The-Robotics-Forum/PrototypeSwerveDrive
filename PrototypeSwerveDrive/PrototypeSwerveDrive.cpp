@@ -25,16 +25,23 @@
 /********************Objects***********************/
 Servo swerve1;
 Servo swerve2;
+Servo swerve4;
+Servo swerve3;
 
 /********************Variables********************/
-int angle[4]={110,90,135,135};
+int correction[4]={-5,-15,-15,5},angle=40;
 	
 void setup(){
 Serial.begin(4800);
 swerve1.attach(11);
 swerve2.attach(12);
+swerve3.attach(6);
+swerve4.attach(7);
 }
 void loop(){
-	swerve2.write(angle[1]);
-	swerve1.write(angle[0]);
+	swerve1.write(angle+correction[0]);
+	swerve2.write(angle+correction[1]);
+	swerve3.write(angle+correction[2]);
+	swerve4.write(angle+correction[3]);
+	delay(1000);
 }
