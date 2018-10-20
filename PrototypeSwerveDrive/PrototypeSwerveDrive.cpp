@@ -24,14 +24,15 @@
 #include <m2560/io.h>
 #include <m2560/Servo.h>
 #include <ModularLibrary/Cytron.h>
-#define pwm1 10
-#define pwm2 9
-#define pwm3 5
-#define pwm4 2
-#define dir1 16
-#define dir2 17
-#define dir3 18
-#define dir4 19
+#define pwm1 4
+#define pwm2 2
+#define pwm3 17
+#define pwm4 6
+
+#define dir1 5
+#define dir2 3
+#define dir3 16
+#define dir4 7
 /********************Objects***********************/
 Servo swerve1;
 Servo swerve2;
@@ -43,8 +44,8 @@ Cytron motor1(dir1,pwm1);
 /********************Variables********************/
 #define servoPwm1 11
 #define servoPwm2 12
-#define servoPwm3 6
-#define servoPwm4 7
+#define servoPwm3 46
+#define servoPwm4 47
 
 int correction[4]={-5,-15,-15,5},angle=40;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made. 
 
@@ -62,6 +63,6 @@ void loop(){
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
 	swerve4.write(angle+correction[3]);	
-	motor1.drive(255);
+	//motor1.drive(255);
 	delay(1000);
 }
