@@ -45,31 +45,30 @@ Servo swerve4;
 #define servoPwm3 5
 #define servoPwm4 2
 
-int correction[4]={-10,-30,-15,5},angle=150;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made. 
-
+int correction[4]={-10,-20,-45,5},angle=150;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made. 
+Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
 /******************Main Code********************/	
 void setup(){
 	Serial.begin(4800);
-	Cytron motor12(dir1,pwm1,dir2,pwm2);
-	/*swerve1.attach(servoPwm1);
+	motors.direction(0,0,0,0);
+	swerve1.attach(servoPwm1);
 	swerve2.attach(servoPwm2);
 	swerve3.attach(servoPwm3);
-	swerve4.attach(servoPwm4);*/
-	motor12.direction(1,1);
-	//motor34.direction(1,1);
-	motor12.drive(100,100);
-	
+	swerve4.attach(servoPwm4);	
 }
 void loop(){
 	//XXX: Check if servo is stalling, if yes don't freak out just make sure it doesn't stall for long time. Check if heating
-	/*swerve1.write(angle+correction[0]);
+	motors.drive(100,100,100,100);
+	angle=170;
+	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
-	swerve4.write(angle+correction[3]);*/	
-	
-	//motor34.drive(100,100);
-	delay(1000);
-	//motor12.drive(0);
-	//motor34.drive(0,0);
-	delay(1000);
+	swerve4.write(angle+correction[3]);	
+	delay(5000);
+	angle=170;
+	swerve1.write(angle+correction[0]);
+	swerve2.write(angle+correction[1]);
+	swerve3.write(angle+correction[2]);
+	swerve4.write(angle+correction[3]);	
+	delay(5000);
 }
