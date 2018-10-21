@@ -27,11 +27,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  11 .debug_str    00000977  00000000  00000000  000078a4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    00000e89  00000000  00000000  0000821b  2**0
+ 12 .debug_loc    00000e88  00000000  00000000  0000821b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_pubtypes 0000007c  00000000  00000000  000090a4  2**0
+ 13 .debug_pubtypes 0000007c  00000000  00000000  000090a3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_ranges 000000c0  00000000  00000000  00009120  2**0
+ 14 .debug_ranges 000000c0  00000000  00000000  0000911f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -2674,7 +2674,7 @@ ISR(INT7_vect)
 
 000010d2 <_Z7forwardv>:
 
-int correction[4]={-10,-20,-45,5},angle=150;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made.
+int correction[4]={-10,-20,-45,5},angle=30;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made.
 Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
 /******************Main Code********************/
 void forward()
@@ -2705,8 +2705,8 @@ void forward()
     1100:	de bf       	out	0x3e, r29	; 62
     1102:	0f be       	out	0x3f, r0	; 63
     1104:	cd bf       	out	0x3d, r28	; 61
-	angle=30+90;
-    1106:	88 e7       	ldi	r24, 0x78	; 120
+	angle=30;
+    1106:	8e e1       	ldi	r24, 0x1E	; 30
     1108:	90 e0       	ldi	r25, 0x00	; 0
     110a:	90 93 bd 02 	sts	0x02BD, r25
     110e:	80 93 bc 02 	sts	0x02BC, r24
@@ -2752,7 +2752,7 @@ void forward()
 	swerve1.write(angle+correction[0]);
     1154:	20 91 b4 02 	lds	r18, 0x02B4
     1158:	30 91 b5 02 	lds	r19, 0x02B5
-    115c:	28 58       	subi	r18, 0x88	; 136
+    115c:	22 5e       	subi	r18, 0xE2	; 226
     115e:	3f 4f       	sbci	r19, 0xFF	; 255
      }
   }

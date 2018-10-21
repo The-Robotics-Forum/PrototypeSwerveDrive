@@ -621,9 +621,9 @@ LOAD c:/program files (x86)/atmel/avr studio 5.1/extensions/atmel/avrgcc/3.3.1.2
  .debug_str     0x00000000      0x977 PrototypeSwerveDrive.o
                                 0xa03 (size before relaxing)
 
-.debug_loc      0x00000000      0xe89
+.debug_loc      0x00000000      0xe88
  *(.debug_loc)
- .debug_loc     0x00000000      0xe89 PrototypeSwerveDrive.o
+ .debug_loc     0x00000000      0xe88 PrototypeSwerveDrive.o
 
 .debug_macinfo
  *(.debug_macinfo)
