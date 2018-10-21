@@ -46,10 +46,13 @@ Servo swerve4;
 
 
 int correction[4]={-10,-20,-45,5},angle=150;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made.
+char d;
 Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
 /******************Main Code********************/
 void forward()
 {
+	if(d=='b')
+		{	motors.drive(0,0,0,0);}
 	angle=150;
 	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
@@ -57,6 +60,20 @@ void forward()
 	swerve4.write(angle+correction[3]);
 	motors.direction(0,0,0,0);
 	motors.drive(200,200,200,200);
+	d='f';
+}
+void backward()
+{if(d=='b')
+	{}
+		else{	motors.drive(0,0,0,0);}
+	angle=150;
+	swerve1.write(angle+correction[0]);
+	swerve2.write(angle+correction[1]);
+	swerve3.write(angle+correction[2]);
+	swerve4.write(angle+correction[3]);
+	motors.direction(1,1,1,1);
+	motors.drive(200,200,200,200);
+	d='b';
 }
 
 void setup(){
