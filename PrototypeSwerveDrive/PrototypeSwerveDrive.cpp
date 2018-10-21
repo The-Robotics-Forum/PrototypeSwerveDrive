@@ -51,10 +51,9 @@ Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
 
 void forward()
 {
-	angle=30;
 	if(d=='b')
 	motors.drive(0,0,0,0);
-	angle=150;
+	angle=120;
 	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
@@ -65,10 +64,10 @@ void forward()
 }
 void backward()
 {	
-	if(d=='b')
-	{}
-		else{	motors.drive(0,0,0,0);}
-	angle=150;
+	if(d=='f')
+	motors.drive(0,0,0,0);
+
+	angle=120;
 	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
