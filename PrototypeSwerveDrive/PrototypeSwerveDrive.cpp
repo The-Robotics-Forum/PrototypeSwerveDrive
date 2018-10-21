@@ -58,7 +58,7 @@ void forward()
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
 	swerve4.write(angle+correction[3]);
-	motors.direction(0,0,0,0);
+	motors.direction(1,1,1,1);
 	motors.drive(200,200,200,200);
 	d='f';
 }
@@ -87,4 +87,7 @@ void setup(){
 void loop(){
 	//XXX: Check if servo is stalling, if yes don't freak out just make sure it doesn't stall for long time. Check if heating
 	forward();
+	delay(1000);
+	backward();
+	delay(1000);
 }
