@@ -9,12 +9,12 @@
  */
 
 /*************INDEX******************
-*BUG � a known bug that should be corrected.
-*FIXME � should be corrected.
-*HACK � a workaround.
-*TODO � something to be done.
-*UNDONE � a reversal or "roll back" of previous code.
-*XXX � warn other programmers of problematic or misguiding code
+*BUG : a known bug that should be corrected.
+*FIXME : should be corrected.
+*HACK : a workaround.
+*TODO : something to be done.
+*UNDONE : a reversal or "roll back" of previous code.
+*XXX : warn other programmers of problematic or misguiding code
 ***************************************/
 
 
@@ -48,19 +48,20 @@ Servo swerve4;
 int correction[4]={-10,-20,-45,5},angle=150;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made.
 Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
 /******************Main Code********************/
-void forward(uint8_t pwm)
+void forward()
 {
 
-  swerve1.write(angle+correction[0]);
+	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
 	swerve4.write(angle+correction[3]);
-  motors.drive(pwm,pwm,pwm,pwm);
+	motors.direction(0,0,0,0);
+	motors.drive(pwm,pwm,pwm,pwm);
 }
 
 void setup(){
 	Serial.begin(4800);
-	motors.direction(0,0,0,0);
+	
 	swerve1.attach(servoPwm1);
 	swerve2.attach(servoPwm2);
 	swerve3.attach(servoPwm3);
