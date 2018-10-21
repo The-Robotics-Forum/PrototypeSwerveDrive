@@ -50,7 +50,7 @@ Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
 /******************Main Code********************/
 void forward()
 {
-	angle=150;
+	angle=30+90;
 	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
