@@ -10,7 +10,7 @@
 #include <servo2560.h>
    
 float k=0.12;  // Constant for getting the sine wave
-int ang1=90,ang2=90,ang3=90,ang4=90;  //Initial angles of servo motors for all wheels to be parallel
+int ang1=120,ang2=120,ang3=120,ang4=120;  //Initial angles of servo motors for all wheels to be parallel
 int v,y,z,w;   //Angles of servo
 int dist;   //Distance in mm from wall
 
@@ -122,13 +122,19 @@ servo servo4;
 	
 	   while(1)
 	   {
-	  
-		   
+	  	int dist;
+		
+		if(Serial.available()>0)
+		{
+		
+		dist=Serial.read();//Take data from UNO through Serial Communication
 	        servo1.attach(11);
 		servo2.attach(12);
 		servo3.attach(5);
 		servo4.attach(3);
 		
+		
+		/*
 		digitalWrite(trig,LOW);
 		delayMicroseconds(2);
 		digitalWrite(trig,HIGH);
@@ -141,9 +147,9 @@ servo servo4;
 		distance=0.034*dur/2;
 		dist=distance*100; // Distance is converted in mm and stored in 'val' variable
 		//According to the distance,we will decide in which quarter of the sine wave we should enter.
+		*/
 		
 		
-		for(dist
 		
 		if((500<=dist)&&(dist<=1250))
 		{
@@ -176,6 +182,7 @@ servo servo4;
 		{
 			angle7(dist);
 		}
+	   }
 	}
 }
   
