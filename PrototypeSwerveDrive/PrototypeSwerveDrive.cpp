@@ -4,7 +4,7 @@
  *
  * //TODO:	1. Test Forward and Backward function. Transition should occur gradually and there should be no load on drivers.
  *			2. Write Left & Right functions
- *			3. Test left & right functions	
+ *			3. Test left & right functions
  *			4. Check the value of Fuse bits and configure fuse bits to use external clk. (Take some senior with you if I am not there, preferably Sahil)
  */
 
@@ -50,9 +50,9 @@ char prevDir;
 
 void forward()
 {
-	if(prevDir=='b'||prevDir=='l')
+	if(prevDir=='b')
 	motors.drive(0,0,0,0);
-	
+
 	angle=120;
 	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
@@ -64,8 +64,8 @@ void forward()
 	prevDir='f';
 }
 void backward()
-{	
-	if(prevDir=='f'||prevDir=='r')
+{
+	if(prevDir=='f')
 	motors.drive(0,0,0,0);
 
 	angle=120;
@@ -80,9 +80,6 @@ void backward()
 }
 void right()
 {
-	if(prevDir=='b'||prevDir=='l')
-	motors.drive(0,0,0,0);
-	
 	angle=30;
 	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
@@ -91,7 +88,21 @@ void right()
 	delay(700);
 	motors.direction(1,1,1,1);
 	motors.drive(100,100,100,100);
-	prevDir='f';
+//	prevDir='f'; ??
+}
+void left()
+{
+	//if(d=='f')
+
+
+	angle=210;
+	swerve1.write(angle+correction[0]);
+	swerve2.write(angle+correction[1]);
+	swerve3.write(angle+correction[2]);
+	swerve4.write(angle+correction[3]);
+	motors.direction(0,0,0,0);
+	motors.drive(200,200,200,200);
+//	d='b';
 }
 void setup(){
 	swerve1.attach(servoPwm1);
@@ -106,7 +117,18 @@ void loop(){
 	delay(1000);
 	backward();
 	delay(1000);*/
-	forward();
+	for(angle=0;angle<180;)
+{angle+=10;
+
+swerve1.write(angle+correction[0]);
+swerve2.write(angle+correction[1]);
+swerve3.write(angle+correction[2]);
+swerve4.write(angle+correction[3]);
+motors.direction(0,0,0,0);
+motors.drive(200,200,200,200);
+_delay_ms(800);
+
+}
 	/*delay(1000);
 	forward();
 	delay(1000);*/
