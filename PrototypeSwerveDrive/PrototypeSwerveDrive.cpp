@@ -5,7 +5,7 @@
  * //TODO:	1. Test Forward and Backward function. Transition should occur gradually and there should be no load on drivers.
  *			2. Write Left & Right functions
  *			3. Test left & right functions	
- *			4. Check the value of Fuse bits and configure fuse bits to use external clk. (Take some senior with you if I am not there, preferrably Sahil)
+ *			4. Check the value of Fuse bits and configure fuse bits to use external clk. (Take some senior with you if I am not there, preferably Sahil)
  */
 
 /*************INDEX******************
@@ -43,7 +43,7 @@ Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
 #define servoPwm3 5
 #define servoPwm4 2
 
-int correction[4]={-10,-20,-45,5},angle=30;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made.
+int correction[4]={-10,-20,-25,5},angle=30;		//HACK:All four servo are not mounted parallely, thus to compensate the offset angle, correction aray is made.
 char prevDir;
 
 /******************Main Code********************/
