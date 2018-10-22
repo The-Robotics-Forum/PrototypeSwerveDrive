@@ -50,7 +50,7 @@ char prevDir;
 
 void forward()
 {
-	if(prevDir=='b')
+	if(prevDir=='b'||prevDir=='l')
 	motors.drive(0,0,0,0);
 	
 	angle=120;
@@ -58,13 +58,14 @@ void forward()
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
 	swerve4.write(angle+correction[3]);
-	motors.direction(1,1,1,1);
-	motors.drive(200,200,200,200);
+	delay(700);
+	motors.direction(0,1,1,0);
+	motors.drive(100,100,100,100);
 	prevDir='f';
 }
 void backward()
 {	
-	if(prevDir=='f')
+	if(prevDir=='f'||prevDir=='r')
 	motors.drive(0,0,0,0);
 
 	angle=120;
@@ -72,11 +73,26 @@ void backward()
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
 	swerve4.write(angle+correction[3]);
+	delay(700);
 	motors.direction(0,0,0,0);
-	motors.drive(200,200,200,200);
+	motors.drive(100,100,100,100);
 	prevDir='b';
 }
-
+void right()
+{
+	if(prevDir=='b'||prevDir=='l')
+	motors.drive(0,0,0,0);
+	
+	angle=30;
+	swerve1.write(angle+correction[0]);
+	swerve2.write(angle+correction[1]);
+	swerve3.write(angle+correction[2]);
+	swerve4.write(angle+correction[3]);
+	delay(700);
+	motors.direction(1,1,1,1);
+	motors.drive(100,100,100,100);
+	prevDir='f';
+}
 void setup(){
 	swerve1.attach(servoPwm1);
 	swerve2.attach(servoPwm2);
@@ -86,8 +102,12 @@ void setup(){
 
 void loop(){
 	//XXX: Check if servo is stalling, if yes don't freak out just make sure it doesn't stall for long time. Check if heating
-	forward();
+	/*forward();
 	delay(1000);
 	backward();
-	delay(1000);
+	delay(1000);*/
+	forward();
+	/*delay(1000);
+	forward();
+	delay(1000);*/
 }
