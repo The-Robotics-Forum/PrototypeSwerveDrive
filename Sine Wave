@@ -106,7 +106,8 @@ servo servo4;
 		servo4.write(w);
 		
 	}
-
+ 
+ 	
 
 
 
@@ -121,6 +122,7 @@ servo servo4;
 	
 	   while(1)
 	   {
+	  
 		   
 	        servo1.attach(11);
 		servo2.attach(12);
@@ -135,10 +137,13 @@ servo servo4;
 		
 		//Distance is calculated in cm using US sensor
 		int dur,distance;
-		dur=pulseIn(echo,HIGH);
+		dur=pUlsein(echo,HIGH);
 		distance=0.034*dur/2;
 		dist=distance*100; // Distance is converted in mm and stored in 'val' variable
 		//According to the distance,we will decide in which quarter of the sine wave we should enter.
+		
+		
+		for(dist
 		
 		if((500<=dist)&&(dist<=1250))
 		{
