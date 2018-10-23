@@ -88,14 +88,14 @@ void right()
 	delay(700);
 	motors.direction(1,1,1,1);
 	motors.drive(100,100,100,100);
-//	prevDir='f'; ??
+	prevDir='r';
 }
 void left()
 {
 	//if(d=='f')
 
 
-	angle=210;
+	angle=210;		//FIXME: Servo goes till 200 angle only;
 	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
@@ -118,16 +118,15 @@ void loop(){
 	backward();
 	delay(1000);*/
 	for(angle=0;angle<180;)
-{angle+=10;
-
-swerve1.write(angle+correction[0]);
-swerve2.write(angle+correction[1]);
-swerve3.write(angle+correction[2]);
-swerve4.write(angle+correction[3]);
-motors.direction(0,0,0,0);
-motors.drive(200,200,200,200);
-_delay_ms(800);
-
+	{
+		angle+=10;
+		swerve1.write(angle+correction[0]);
+		swerve2.write(angle+correction[1]);
+		swerve3.write(angle+correction[2]);
+		swerve4.write(angle+correction[3]);
+	motors.direction(0,0,0,0);
+	motors.drive(200,200,200,200);
+	_delay_ms(800);
 }
 	/*delay(1000);
 	forward();
