@@ -1,23 +1,41 @@
 /*
- * GccApplication37.cpp
- *
- * Created: 17-10-2018 14:49:49
- * Author : SHAUNAK
+ SINE WAVE
+ 
  */ 
+ 
+ 
+#define F_CPU 1000000UL		//Buffer board's crystal is not working
 #define trig 22
 #define echo 3
-#include <io2560.h>
-#include <servo2560.h>
-   
+#include <m2560/io.h>
+#include <m2560/Servo.h>
+#include <ModularLibrary/Cytron.h>
+
+#define pwm1 4
+#define pwm2 13
+#define pwm3 10
+#define pwm4 9
+
+#define dir1 30
+#define dir2 31
+#define dir3 32
+#define dir4 33
+
 float k=0.12;  // Constant for getting the sine wave
 int ang1=120,ang2=120,ang3=120,ang4=120;  //Initial angles of servo motors for all wheels to be parallel
 int v,y,z,w;   //Angles of servo
 int dist;   //Distance in mm from wall
 
+
+/********************Objects***********************/
 servo servo1;   // 4 Objects created for 4 servos
 servo servo2;
 servo servo3;
 servo servo4;
+Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
+
+
+
 	void angle1(int dist)
 	{
 		v=(ang1-90) +(dist-1250)*k;
@@ -49,10 +67,10 @@ servo servo4;
 		z=(ang3+90)-(dist-2750)*k;
 		w=(ang4+90)-(dist-2750)*k;
 
-		servo1.write(4,v);
-		servo2.write(5,y);
-		servo3.write(6,z);
-		servo4.write(7,w);
+		servo1.write(v);
+		servo2.write(y);
+		servo3.write(z);
+		servo4.write(w);
 		
 	}
 	void angle4(int dist)
@@ -124,10 +142,7 @@ servo servo4;
 	   {
 	  	int dist;
 		
-		if(Serial.available()>0)
-		{
-		
-		dist=Serial.read();//Take data from UNO through Serial Communication
+	
 	        servo1.attach(11);
 		servo2.attach(12);
 		servo3.attach(5);
@@ -182,7 +197,7 @@ servo servo4;
 		{
 			angle7(dist);
 		}
-	   }
+	   
 	}
 }
   
