@@ -136,11 +136,10 @@ Cytron motors(dir1,pwm1,dir2,pwm2,dir3,pwm3,dir4,pwm4);
         pinMode(echo,0);
  	pinMode(trig,1);
 		
-
-	
-	   while(1)
-	   {
-	  	int dist;
+for(i=1;i<=5750;i=i++)
+{	
+	  
+	  	
 		
 	
 	        servo1.attach(11);
