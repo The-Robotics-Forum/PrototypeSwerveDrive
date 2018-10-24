@@ -163,7 +163,7 @@ swerve1.write(v+correction[0]);
 		y=ang2-(dist-500)*k;
 		z=ang3-(dist-500)*k;
 		w=ang4-(dist-500)*k;
-		
+
 		swerve1.write(v+correction[0]);
 		swerve2.write(y+correction[1]);
 		swerve3.write(z+correction[2]);
@@ -216,6 +216,8 @@ void setup(){
 	swerve4.attach(servoPwm4);
 	for(dist=500;dist<=1250;dist+=5){
 		mot_theta=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
+    swerve1.write(mot_theta+correction[0]);
+		
 		swerve2.write(mot_theta+correction[1]);
 		swerve3.write(mot_theta+correction[2]);
 		swerve4.write(mot_theta+correction[3]);
