@@ -193,6 +193,20 @@ void angle7(int dist){
 	swerve4.write(w+correction[3]);
 }*/
 
+void simulate(){
+	dist=500;	//initial distance
+	while(dist<=1250){
+		distl+
+		alpha=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
+		swerve1.write(alpha+correction[0]);
+		swerve2.write(alpha+correction[1]);
+		swerve3.write(alpha+correction[2]);
+		swerve4.write(alpha+correction[3]);
+		motors.direction(0,0,0,0);
+		motors.drive(250,250,250,250);
+	}
+}
+
 
 void setup(){
 	swerve1.attach(servoPwm1);
