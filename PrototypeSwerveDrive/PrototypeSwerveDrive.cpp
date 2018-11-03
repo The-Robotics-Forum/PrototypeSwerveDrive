@@ -48,7 +48,7 @@ char prevDir;
 
 /******************Main Code********************/
 
-void forward()
+/*void forward()
 {
 	if(prevDir=='b')
 	motors.drive(0,0,0,0);
@@ -191,7 +191,7 @@ void angle7(int dist){
 	swerve2.write(y+correction[1]);
 	swerve3.write(z+correction[2]);
 	swerve4.write(w+correction[3]);
-}
+}*/
 
 
 void setup(){
@@ -200,7 +200,8 @@ void setup(){
 	swerve3.attach(servoPwm3);
 	swerve4.attach(servoPwm4);
 	motors.direction(0,0,0,0);
-	motors.drive(250,250,250,250);
+	motors.drive(0,0,0,0);
+	delay(3000);
 	for(dist=500;dist<=1250;dist+=5){
 		mot_theta=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
 		swerve1.write(mot_theta+correction[0]);
@@ -215,14 +216,4 @@ void setup(){
 
 void loop(){
 	//XXX: Check if servo is stalling, if yes don't freak out just make sure it doesn't stall for long time. Check if heating
-	for(angle=0;angle<180;){	
-		angle+=10;
-		swerve1.write(angle+correction[0]);
-		swerve2.write(angle+correction[1]);
-		swerve3.write(angle+correction[2]);
-		swerve4.write(angle+correction[3]);
-		motors.direction(0,0,0,0);
-		motors.drive(200,200,200,200);
-		_delay_ms(800);
-	}
 }	
