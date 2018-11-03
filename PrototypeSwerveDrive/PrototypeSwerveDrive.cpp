@@ -5,7 +5,7 @@
  * //TODO:	1. Test Forward and Backward function. Transition should occur gradually and there should be no load on drivers.
  *			2. Write Left & Right functions
  *			3. Test left & right functions
- *			
+ *
  */
 
 /*************INDEX******************
@@ -87,7 +87,7 @@ void right()
 	swerve2.write(angle+correction[1]);
 	swerve3.write(angle+correction[2]);
 	swerve4.write(angle+correction[3]);
-	
+
 	delay(700);
 	motors.direction(1,1,1,1);
 	motors.drive(100,100,100,100);
@@ -150,7 +150,7 @@ void angle4(int dist){
 	y=ang2-(dist-500)*k;
 	z=ang3-(dist-500)*k;
 	w=ang4-(dist-500)*k;
-	
+
 	swerve1.write(v+correction[0]);
 	swerve2.write(y+correction[1]);
 	swerve3.write(z+correction[2]);
@@ -202,19 +202,11 @@ void setup(){
 	motors.direction(0,0,0,0);
 	motors.drive(0,0,0,0);
 	delay(5000);
-	
-	for(dist=500;dist<=1250;dist+=5){
-		alpha=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
-		swerve1.write(alpha+correction[0]);
-		swerve2.write(alpha+correction[1]);
-		swerve3.write(alpha+correction[2]);
-		swerve4.write(alpha+correction[3]);
-		motors.direction(0,0,0,0);
-		motors.drive(250,250,250,250);
-	}
 
+	simulate();
+	motors.drive(0,0,0,0);
 }
 
 void loop(){
 	//XXX: Check if servo is stalling, if yes don't freak out just make sure it doesn't stall for long time. Check if heating
-}	
+}
