@@ -201,13 +201,14 @@ void setup(){
 	swerve4.attach(servoPwm4);
 	motors.direction(0,0,0,0);
 	motors.drive(0,0,0,0);
-	delay(3000);
+	delay(5000);
+	
 	for(dist=500;dist<=1250;dist+=5){
-		mot_theta=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
-		swerve1.write(mot_theta+correction[0]);
-		swerve2.write(mot_theta+correction[1]);
-		swerve3.write(mot_theta+correction[2]);
-		swerve4.write(mot_theta+correction[3]);
+		alpha=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
+		swerve1.write(alpha+correction[0]);
+		swerve2.write(alpha+correction[1]);
+		swerve3.write(alpha+correction[2]);
+		swerve4.write(alpha+correction[3]);
 		motors.direction(0,0,0,0);
 		motors.drive(250,250,250,250);
 	}
