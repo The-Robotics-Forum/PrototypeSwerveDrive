@@ -93,8 +93,13 @@ void right()
 {
 <<<<<<< HEAD
 	//if(d=='f')
+<<<<<<< HEAD
 =======
 >>>>>>> parent of 1f865f4... HARDCODED SINE WAVE!!
+=======
+
+
+>>>>>>> parent of 7b1b1a0... Minor change
 	angle=30;
 	swerve1.write(angle+correction[0]);
 	swerve2.write(angle+correction[1]);
@@ -218,13 +223,18 @@ void setup(){
 	swerve3.attach(servoPwm3);
 	swerve4.attach(servoPwm4);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	motors.direction(0,0,0,0);
 	motors.drive(250,250,250,250);
+=======
+>>>>>>> parent of 7b1b1a0... Minor change
 	for(dist=500;dist<=1250;dist+=5){
 		mot_theta=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
 		swerve2.write(mot_theta+correction[1]);
 		swerve3.write(mot_theta+correction[2]);
-		swerve4.write(mot_theta+correction[3]);	
+		swerve4.write(mot_theta+correction[3]);
+		motors.direction(0,0,0,0);
+		motors.drive(250,250,250,250);
 	}
 =======
 >>>>>>> parent of 1f865f4... HARDCODED SINE WAVE!!
