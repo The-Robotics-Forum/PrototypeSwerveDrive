@@ -109,26 +109,11 @@ void left()
 	prevDir='l';
 }
 
-<<<<<<< HEAD
-	}
-	void angle4(int dist)
-	{
-		v=ang1-(dist-500)*k;
-		y=ang2-(dist-500)*k;
-		z=ang3-(dist-500)*k;
-		w=ang4-(dist-500)*k;
-
-		swerve1.write(v+correction[0]);
-		swerve2.write(y+correction[1]);
-		swerve3.write(z+correction[2]);
-		swerve4.write(w+correction[3]);
-=======
 void angle1(int dist){
 	v=(ang1-90) +(dist-1250)*k;
 	y=(ang2-90)+ (dist-1250)*k;
 	z=(ang3-90)+ (dist-1250)*k;
 	w=(ang4-90)+ (dist-1250)*k;
->>>>>>> d859413f917bffa421909376a15d7e04ecc7c8ac
 
 	swerve1.write(v+correction[0]);
 	swerve2.write(y+correction[1]);
@@ -211,7 +196,9 @@ void angle7(int dist){
 void simulate(){
 	dist=500;	//initial distance
 	while(dist<=1250){
-		distl+
+		ychorddist=ychorddist+5;
+	  angl=asin(ychorddist/amp);
+		dist=map(angl,500,1250,0,pi);
 		alpha=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
 		swerve1.write(alpha+correction[0]);
 		swerve2.write(alpha+correction[1]);
@@ -228,11 +215,10 @@ void setup(){
 	swerve2.attach(servoPwm2);
 	swerve3.attach(servoPwm3);
 	swerve4.attach(servoPwm4);
-<<<<<<< HEAD
 	for(dist=500;dist<=1250;dist+=5){
 		mot_theta=atan(1.05*cos(0.0020943951*dist-2.61799387799))*180/M_PI;
     swerve1.write(mot_theta+correction[0]);
-		
+
 		swerve2.write(mot_theta+correction[1]);
 		swerve3.write(mot_theta+correction[2]);
 		swerve4.write(mot_theta+correction[3]);
@@ -241,11 +227,6 @@ void setup(){
 	}
 }
 
-=======
-	motors.direction(0,0,0,0);
-	motors.drive(0,0,0,0);
-	delay(5000);
->>>>>>> d859413f917bffa421909376a15d7e04ecc7c8ac
 
 	simulate();
 	motors.drive(0,0,0,0);
